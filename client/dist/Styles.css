@@ -1,49 +1,105 @@
-.gameover {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 40px;
+body {
+  margin: 0;
+  font-family: 'Varela', sans-serif;
   text-align: center;
-  font-style: oblique;
+}
+.banner {
+  background-image: linear-gradient(deepskyblue, white);
+}
+.title {
+  font-size: 50px;
+  color: white;
+  text-shadow: 3px 3px 3px black;
 }
 .turn {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Varela', sans-serif;
+  font-size: 25px;
   text-align: center;
+  font-weight: bold;
+}
+.turnText {
+  font-size: 22px;
+}
+.redTurn {
+  width: 35px;
+  height: 35px;
+  background-color: red;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 40px;
+}
+.blackTurn {
+  width: 35px;
+  height: 35px;
+  background-color: black;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 40px;
+}
+.gameover {
+  font-size: 45px;
+  color: white;
+  text-align: center;
+  text-shadow: 3px 3px 3px black;
 }
 .board {
-  background-color: lemonchiffon;
-  width: 300px;
-  text-align: center;
+  width: 480px;
+  height: 385px;
+  background-color: yellow;
+  background-image: linear-gradient(yellow, #FFCC00);
   margin: auto;
+  text-align: center;
   border-style: solid;
-  border-color: black;
+}
+.row {
+  display: inline-flex;
 }
 .circle0 {
-  width: 50px;
-  height: 50px;
+  width: 28px;
+  height: 28px;
   background-color: white;
-  border-radius: 50%;
+  margin: 7px;
   border: black;
   border-style: solid;
+  border-radius: 50%;
   padding: 5px;
-  margin: 10px;
 }
 .circle1 {
-  width: 50px;
-  height: 50px;
-  background-color: darkgray;
-  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  background-color: black;
+  margin: 7px;
   border: black;
   border-style: solid;
+  border-radius: 50%;
   padding: 5px;
-  margin: 10px;
 }
 .circle2 {
-  width: 50px;
-  height: 50px;
-  background-color: indianred;
-  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  background-color: red;
+  margin: 7px;
   border: black;
   border-style: solid;
+  border-radius: 50%;
   padding: 5px;
+}
+.reset {
+  width: 180px;
+  height: 45px;
+  background-color: deepskyblue;
+  background-image: linear-gradient( deepskyblue, dodgerblue);
+  font-family: 'Varela', sans-serif;
+  font-size: 20px;
+  color: white;
+  text-shadow: 1px 1px 2px dimgrey;
   margin: 10px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 30px;
+  cursor: pointer;
 }

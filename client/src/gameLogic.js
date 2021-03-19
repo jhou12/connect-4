@@ -1,4 +1,6 @@
-let rowDrop = function(state, col) {
+  // Red = 2, Black = 1, Blank = 0
+
+  let rowDrop = function(state, col) {
   let bottomRow
   for (let row = 0; row < state.length; row++) {
     if (state[row][col] === 0) {

@@ -69,13 +69,20 @@ class App extends React.Component {
     return (
       <div>
 
+        <div className="banner">
+        <div className="title">Connect 4</div>
         <div className="gameover">{this.state.gameover}</div>
-        <div className="turn">Current turn: {this.state.turn}</div>
+            {!this.state.gameover? <div className="turn">
+            <div className="turnText">Current turn:</div>
+            {this.state.turn === "Red"?
+            <div className="redTurn"></div> : <div className="blackTurn"></div>}
+            </div> : null}
+        </div>
       <p></p><div className="board">
         <p></p>
         {this.state.current.map((row, index) => <Row row={row} key={index} rowIndex={index} togglePiece={this.state.lock ? null : this.togglePiece}/>)}
       </div>
-
+      <button className="reset" onClick={()=>{location.reload()}}>Reset Game</button>
       </div>
     )
   }

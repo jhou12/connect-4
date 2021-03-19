@@ -11,18 +11,18 @@ class Position extends React.Component {
   render() {
     if (this.props.position === 0) {
       return (
-          <span className="circle0" onClick={this.sendPosition}>
-          </span>
+          <div className="circle0" onClick={this.sendPosition}>
+          </div>
       )
     } else if (this.props.position === 1) {
       return (
-        <span className="circle1" onClick={this.sendPosition}>
-        </span>
+        <div className="circle1" onClick={this.sendPosition}>
+        </div>
     )
     } else {
       return (
-        <span className="circle2" onClick={this.sendPosition}>
-        </span>
+        <div className="circle2" onClick={this.sendPosition}>
+        </div>
     )
     }
   }
