@@ -1,3 +1,49 @@
-body {
-  margin: 0;
+.gameover {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  text-align: center;
+  font-style: oblique;
+}
+.turn {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+.board {
+  background-color: lemonchiffon;
+  width: 300px;
+  text-align: center;
+  margin: auto;
+  border-style: solid;
+  border-color: black;
+}
+.circle0 {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  border: black;
+  border-style: solid;
+  padding: 5px;
+  margin: 10px;
+}
+.circle1 {
+  width: 50px;
+  height: 50px;
+  background-color: darkgray;
+  border-radius: 50%;
+  border: black;
+  border-style: solid;
+  padding: 5px;
+  margin: 10px;
+}
+.circle2 {
+  width: 50px;
+  height: 50px;
+  background-color: indianred;
+  border-radius: 50%;
+  border: black;
+  border-style: solid;
+  padding: 5px;
+  margin: 10px;
 }

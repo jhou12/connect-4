@@ -1,32 +1,84 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import Styles, { Container, Column, Title, Emoji } from './Styles.js';
-import List from './List.jsx';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Row from './components/Row.jsx'
+const gameLogic = require('./gameLogic.js')
 
-const App = () => {
-  const [testState, setTestState] = useState([])
+let reset = [
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0]
+];
 
-  useEffect(() => {
-    axios('/read')
-    .then(res => {
-      console.log('data retrieved:', res.data)
-      setTestState(res.data)
-    })
-    .catch(err => console.log('client GET req error:', err))
-  }, [])
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      gameover: '',
+      lock: false,
+      current: reset,
+      default: reset,
+      turn: 'Red'
+    }
+    this.togglePiece = this.togglePiece.bind(this)
+  }
+  togglePiece(row, col) {
+    // Red = 2, Black = 1, Blank = 0
+    let bottomRow = gameLogic.rowDrop(this.state.current, col)
+      if (this.state.turn === 'Red') {
+      let newBoard = this.state.current
+      newBoard[bottomRow][col] = 2
+      this.setState({
+        turn: 'Black',
+        current: newBoard
+      })
+      if (gameLogic.winCheck(newBoard, bottomRow, col)) {
+        this.setState({
+          gameover: 'Red Wins!',
+          lock: true
+        })
+      }
+      if (gameLogic.tieCheck(newBoard)) {
+        this.setState({
+          gameover: 'Tie!'
+        })
+      }
+    } else {
+      let newBoard = this.state.current
+      newBoard[bottomRow][col] = 1
+      this.setState({
+        turn: 'Red',
+        current: newBoard
+      })
+      if (gameLogic.winCheck(newBoard, bottomRow, col)) {
+        this.setState({
+          gameover: 'Black Wins!',
+          lock: true
+        })
+      }
+      if (gameLogic.tieCheck(newBoard)) {
+        this.setState({
+          gameover: 'Tie!'
+        })
+      }
+    }
+  }
+  render() {
+    return (
+      <div>
 
-  return (
-    <Container>
+        <div className="gameover">{this.state.gameover}</div>
+        <div className="turn">Current turn: {this.state.turn}</div>
+      <p></p><div className="board">
+        <p></p>
+        {this.state.current.map((row, index) => <Row row={row} key={index} rowIndex={index} togglePiece={this.state.lock ? null : this.togglePiece}/>)}
+      </div>
 
-      <Column>
-        <Title>React running!</Title>
-        <Emoji>⚛️</Emoji>
-        {testState.length === 0? 'No data to display.' : <List testState={testState}/>}
-      </Column>
-
-    </Container>
-  )
+      </div>
+    )
+  }
 }
 
 export default App;
